@@ -1,0 +1,102 @@
+---
+  - 
+    name: "wiper"
+    label: "Uzdel"
+    color: "#603cba"
+    icon: "alert"
+    items: 
+      - 
+        name: "1"
+        label: "1 marta\no'chirish"
+        color: "#34eb92"
+        icon: 'swap'
+        items:
+          -
+            name: "random"
+            label: "Tasodifiy\nalgoritm"
+            color: "#34eb92"
+            icon: "deeplink"
+          -
+            name: "zero"
+            label: "Nollash\nalgoritmi"
+            color: "#34eb92"
+            icon: "delete"
+      -
+        name: "2"
+        label: "2 marta\no'chirish"
+        color: "#34eb92"
+        icon: 'swap'
+        items:
+          -
+            name: "random"
+            label: "Tasodifiy\nalgoritm"
+            color: "#34eb92"
+            icon: "deeplink"
+          -
+            name: "zero"
+            label: "Nollash\nalgoritmi"
+            color: "#34eb92"
+            icon: "delete"
+      -
+        name: "4"
+        label: "4 marta\no'chirish"
+        color: "#34eb92"
+        icon: 'swap'
+        items:
+          -
+            name: "random"
+            label: "Tasodifiy\nalgoritm"
+            color: "#34eb92"
+            icon: "deeplink"
+          -
+            name: "zero"
+            label: "Nollash\nalgoritmi"
+            color: "#34eb92"
+            icon: "delete"
+      -
+        name: "6"
+        label: "6 marta\no'chirish"
+        color: "#34eb92"
+        icon: 'swap'
+        items:
+          -
+            name: "random"
+            label: "Tasodifiy\nalgoritm"
+            color: "#34eb92"
+            icon: "deeplink"
+          -
+            name: "zero"
+            label: "Nollash\nalgoritmi"
+            color: "#34eb92"
+            icon: "delete"
+      -
+        name: "8"
+        label: "8 marta\no'chirish"
+        color: "#34eb92"
+        icon: 'swap'
+        items:
+          -
+            name: "random"
+            label: "Tasodifiy\nalgoritm"
+            color: "#34eb92"
+            icon: "deeplink"
+          -
+            name: "zero"
+            label: "Nollash\nalgoritmi"
+            color: "#34eb92"
+            icon: "delete"
+            
+  - 
+    name: "shredder"
+    label: "Burdalovchi"
+    color: "#9f00a7"
+    icon: "zune"
+    items:
+      -
+        label : "Barcha fayllarni\nburdalash"
+        name: "shred"
+        icon : "transit.connection"
+      -
+        label : "Tanlangan\nfayllarni\nburdalash"
+        name: "shredFile"
+        icon : "tiles.plus"
