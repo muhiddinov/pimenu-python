@@ -1,0 +1,67 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+    #     paths:
+    #       - 'scripts/templates'
+    #       - 'tests/test_readme_examples.py'
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [ "3.6", "3.7", "3.8", "3.9", "3.10" ]
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Cache $HOME/.local (primarily for poetry install).
+      #   Ref: https://www.peterbe.com/plog/install-python-poetry-github-actions-faster
+      - name: Load cached $HOME/.local
+        uses: actions/cache@v2.1.6
+        with:
+          path: ~/.local
+          key: dotlocal-${{ runner.os }}-${{ matrix.python-version }}-${{ hashFiles('.github/workflows/build.yml') }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v2.3.2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+
+      - name: Run Tests
+        run: |
+          poetry install
+          poetry run flake8
+          poetry run pytest
+
+      # - run: pip install -r scripts/requirements.ci.txt
+      - name: Build README.md
+        run: poetry run python scripts/make_doc.py
+
+      - name: Commit README update
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: "README.md"
+          commit_message: "auto: Generate README.md"
